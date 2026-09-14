@@ -11,7 +11,8 @@ import {
   MessageCircle,
   Truck,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "wouter";
 import Navbar from "@/components/borla/Navbar";
 import Footer from "@/components/borla/Footer";
 import { FAQS, HOW_IT_WORKS, PLANS } from "@/data/cleanconnect";
@@ -95,6 +96,20 @@ const fallbackPlans = [
 
 export default function Home() {
   const [openFaq, setOpenFaq] = useState(0);
+  const [location] = useLocation();
+
+  // When arriving from another page with a hash (e.g. /#pricing), scroll to it.
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (!hash) return;
+    const el = document.getElementById(hash.slice(1));
+    if (!el) return;
+    const timer = window.setTimeout(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 80);
+    return () => window.clearTimeout(timer);
+  }, [location]);
+
   const plans =
     PLANS.length === 3
       ? PLANS.map((plan, index) => ({
@@ -233,7 +248,7 @@ export default function Home() {
 
         <section
           id="how"
-          className="border-b border-[#dfe4db] bg-[#eef2eb] px-5 py-14 sm:px-8 lg:py-20"
+          className="scroll-mt-[76px] border-b border-[#dfe4db] bg-[#eef2eb] px-5 py-14 sm:px-8 lg:py-20"
         >
           <div className="mx-auto max-w-6xl">
             <div className="max-w-2xl">
@@ -274,7 +289,7 @@ export default function Home() {
 
         <section
           id="pricing"
-          className="border-b border-[#dfe4db] bg-white px-5 py-14 sm:px-8 lg:py-20"
+          className="scroll-mt-[76px] border-b border-[#dfe4db] bg-white px-5 py-14 sm:px-8 lg:py-20"
         >
           <div className="mx-auto max-w-6xl">
             <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
@@ -358,7 +373,7 @@ export default function Home() {
 
         <section
           id="questions"
-          className="border-b border-[#dfe4db] bg-[#f7f6f0] px-5 py-14 sm:px-8 lg:py-20"
+          className="scroll-mt-[76px] border-b border-[#dfe4db] bg-[#f7f6f0] px-5 py-14 sm:px-8 lg:py-20"
         >
           <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[0.7fr_1.3fr]">
             <div>
@@ -373,7 +388,9 @@ export default function Home() {
                 change? Start here.
               </p>
               <a
-                href="mailto:contact@cleanconnect.gh"
+                href="https://wa.me/233248814260"
+                target="_blank"
+                rel="noreferrer"
                 className="mt-6 inline-flex items-center gap-2 text-sm font-bold text-[#16352c] underline decoration-[#f07b5c] decoration-2 underline-offset-4"
               >
                 Ask our team <ArrowRight size={15} />

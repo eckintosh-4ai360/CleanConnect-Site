@@ -2,6 +2,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "wouter";
+import SectionLink from "@/components/borla/SectionLink";
 
 const links = [
   ["How it works", "#how"],
@@ -51,14 +52,14 @@ export default function Navbar() {
 
         <nav className="hidden items-center gap-7 lg:flex" aria-label="Main navigation">
           {links.map(([label, href]) => (
-            <a key={href} href={href} className="relative py-3 text-[12px] font-semibold text-[#56645b] transition-colors hover:text-[#16352c]">{label}</a>
+            <SectionLink key={href} href={href} className="relative py-3 text-[12px] font-semibold text-[#56645b] transition-colors hover:text-[#16352c]">{label}</SectionLink>
           ))}
           <Link href="/about" className={`py-3 text-[12px] font-semibold transition-colors hover:text-[#16352c] ${location === "/about" ? "text-[#16352c]" : "text-[#56645b]"}`}>About</Link>
         </nav>
 
         <div className="hidden items-center gap-5 lg:flex">
-          <a href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-[#020F2F] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">Download App <ArrowUpRight size={15} /></a>
-          <a href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">See pricing <ArrowUpRight size={15} /></a>
+          <SectionLink href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-[#020F2F] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">Download App <ArrowUpRight size={15} /></SectionLink>
+          <SectionLink href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">See pricing <ArrowUpRight size={15} /></SectionLink>
         </div>
 
         <button type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d5ddd4] text-[#16352c] lg:hidden">
@@ -70,14 +71,14 @@ export default function Navbar() {
         {menuOpen && (
           <motion.nav initial={{ height: 0, opacity: 0 }} animate={{ height: "auto", opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.25, ease: "easeOut" }} className="overflow-hidden border-t border-[#dfe4db] bg-[#f7f6f0] lg:hidden" aria-label="Mobile navigation">
             <div className="mx-auto flex max-w-[1280px] flex-col px-5 pb-6 pt-2 sm:px-8">
-              {links.map(([label, href]) => <a key={href} href={href} onClick={closeMenu} className="border-b border-[#e1e5de] py-4 text-sm font-semibold text-[#33473d]">{label}</a>)}
+              {links.map(([label, href]) => <SectionLink key={href} href={href} onClick={closeMenu} className="border-b border-[#e1e5de] py-4 text-sm font-semibold text-[#33473d]">{label}</SectionLink>)}
               <Link href="/about" onClick={closeMenu} className="border-b border-[#e1e5de] py-4 text-sm font-semibold text-[#33473d]">About</Link>
               <div className="flex flex-col gap-3 pt-5 sm:flex-row">
-                <a href="#pricing" onClick={closeMenu} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-sm font-bold text-white">See pricing <ArrowUpRight size={16} /></a>
+                <SectionLink href="#pricing" onClick={closeMenu} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-sm font-bold text-white">See pricing <ArrowUpRight size={16} /></SectionLink>
                 <a href="tel:+233248814260" className="inline-flex items-center justify-center rounded-full border border-[#cbd5cc] px-5 py-3 text-sm font-bold text-[#33473d]">+233 24 881 4260</a>
               </div>
             </div>
-          </motion.nav>
+          </motion.nav> 
         )}
       </AnimatePresence>
     </motion.header>
