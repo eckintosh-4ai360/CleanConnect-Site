@@ -98,7 +98,7 @@ export default function About() {
           >
             <div className="relative min-h-[340px] overflow-hidden rounded-[26px] bg-[#dfe8dc] sm:min-h-[420px]">
               <img
-                src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?auto=format&fit=crop&w=1600&q=85"
+                src="/about bins.png"
                 alt="Clean public space in a Ghanaian city"
                 className="absolute inset-0 h-full w-full object-cover"
               />
