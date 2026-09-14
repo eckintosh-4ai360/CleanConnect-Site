@@ -1,0 +1,23 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline { --font-sans: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; --radius-sm: 0.5rem; --radius-md: 0.75rem; --radius-lg: 1rem; --radius-xl: 1.5rem; }
+
+:root { --background: #f7f6f0; --foreground: #16352c; --border: #dfe4db; --ring: #f07b5c; }
+
+@layer base {
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; min-width: 320px; background: #f7f6f0; color: #16352c; font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+  button, a, input { font: inherit; }
+  button:not(:disabled), a[href], input:not(:disabled) { cursor: pointer; }
+  ::selection { background: #f0c66c; color: #16352c; }
+}
+
+.cc-display { font-family: 'Sora', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; letter-spacing: 0; }
+.cc-grid-lines { background-image: linear-gradient(rgba(22, 53, 44, 0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(22, 53, 44, 0.055) 1px, transparent 1px); background-size: 42px 42px; mask-image: linear-gradient(to bottom, black, transparent 84%); }
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; } }
