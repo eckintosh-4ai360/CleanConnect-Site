@@ -8,15 +8,13 @@ import {
   CheckCircle2,
   ChevronDown,
   CreditCard,
-  MapPin,
   MessageCircle,
   Truck,
-  X,
 } from "lucide-react";
-import { type SubmitEvent, useMemo, useRef, useState } from "react";
+import { useState } from "react";
 import Navbar from "@/components/borla/Navbar";
 import Footer from "@/components/borla/Footer";
-import { AREAS, FAQS, HOW_IT_WORKS, PLANS } from "@/data/cleanconnect";
+import { FAQS, HOW_IT_WORKS, PLANS } from "@/data/cleanconnect";
 
 const reveal = {
   hidden: { opacity: 0, y: 22 },
@@ -96,34 +94,7 @@ const fallbackPlans = [
 ];
 
 export default function Home() {
-  const [query, setQuery] = useState("");
-  const [pickedArea, setPickedArea] = useState<(typeof AREAS)[number] | null>(
-    null
-  );
   const [openFaq, setOpenFaq] = useState(0);
-  const areaInput = useRef<HTMLInputElement>(null);
-  const coverageResult = useMemo(() => {
-    if (pickedArea) return pickedArea;
-    const normalized = query.trim().toLowerCase();
-    if (normalized.length < 2) return null;
-    return (
-      AREAS.find(area => area.name.toLowerCase().startsWith(normalized)) ??
-      AREAS.find(area => area.name.toLowerCase().includes(normalized)) ??
-      "miss"
-    );
-  }, [pickedArea, query]);
-  const selectArea = (area: (typeof AREAS)[number]) => {
-    setPickedArea(area);
-    setQuery(area.name);
-  };
-  const checkCoverage = (event: SubmitEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (coverageResult && coverageResult !== "miss") {
-      selectArea(coverageResult);
-      // Dismiss the mobile keyboard so the result is visible.
-      (document.activeElement as HTMLElement | null)?.blur();
-    }
-  };
   const plans =
     PLANS.length === 3
       ? PLANS.map((plan, index) => ({
@@ -159,17 +130,17 @@ export default function Home() {
               initial="hidden"
               animate="visible"
               variants={stagger}
-              className="flex flex-1 flex-col justify-center py-12 lg:py-16"
+              className="flex flex-1 flex-col justify-center py-8 lg:py-14"
             >
               <motion.p
                 variants={reveal}
-                className="inline-flex w-fit items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm"
+                className="inline-flex w-fit items-center gap-2  px-4 py-1 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/80 backdrop-blur-sm"
               >
                 <span className="relative flex h-2 w-2">
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#a9d6b4] opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-[#a9d6b4]" />
                 </span>
-                Now collecting in {AREAS.length} neighborhoods
+                Tarkwa · Household &amp; business waste collection
               </motion.p>
               <motion.h1
                 variants={reveal}
@@ -185,140 +156,6 @@ export default function Home() {
                 Know your pickup day, track the truck to your street, and pay
                 with MoMo.
               </motion.p>
-              <motion.div
-                variants={reveal}
-                id="coverage"
-                className="mt-8 w-full max-w-xl scroll-mt-28"
-              >
-                <form
-                  onSubmit={checkCoverage}
-                  className="overflow-hidden rounded-[22px] bg-[#f7f6f0] text-[#16352c] shadow-[0_24px_60px_rgba(4,22,16,0.35)] ring-[#f0c66c] focus-within:ring-2"
-                >
-                  <div className="flex items-center gap-2 p-2 pl-5">
-                    <MapPin size={18} className="shrink-0 text-[#e77b5e]" />
-                    <label htmlFor="coverage-search" className="sr-only">
-                      Your area
-                    </label>
-                    <input
-                      ref={areaInput}
-                      id="coverage-search"
-                      type="search"
-                      value={query}
-                      onChange={event => {
-                        setQuery(event.target.value);
-                        setPickedArea(null);
-                      }}
-                      placeholder="Your area, e.g. Madina"
-                      autoComplete="off"
-                      enterKeyHint="search"
-                      className="min-w-0 flex-1 bg-transparent py-3 text-base font-semibold outline-none placeholder:font-medium placeholder:text-[#8a978e] [&::-webkit-search-cancel-button]:hidden"
-                    />
-                    {query && (
-                      <button
-                        type="button"
-                        aria-label="Clear area"
-                        onClick={() => {
-                          setQuery("");
-                          setPickedArea(null);
-                          areaInput.current?.focus();
-                        }}
-                        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-[#8a978e] transition-colors hover:bg-[#e6ebe3] hover:text-[#16352c]"
-                      >
-                        <X size={16} />
-                      </button>
-                    )}
-                    <button
-                      type="submit"
-                      className="inline-flex shrink-0 items-center gap-2 rounded-full bg-[#16352c] px-4 py-3 text-sm font-bold text-white transition-colors hover:bg-[#285247] sm:px-5"
-                    >
-                      <span className="sr-only sm:not-sr-only">Find my day</span>
-                      <ArrowRight size={16} />
-                    </button>
-                  </div>
-                  <div aria-live="polite">
-                    <AnimatePresence initial={false}>
-                      {coverageResult && (
-                        <motion.div
-                          key="coverage-result"
-                          initial={{ height: 0, opacity: 0 }}
-                          animate={{ height: "auto", opacity: 1 }}
-                          exit={{ height: 0, opacity: 0 }}
-                          transition={{ duration: 0.25, ease: "easeOut" }}
-                          className="overflow-hidden"
-                        >
-                          <div className="flex flex-col gap-3 border-t border-[#dfe4db] px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-                            {coverageResult === "miss" ? (
-                              <>
-                                <div className="flex items-center gap-3">
-                                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#fbe4dc] text-[#d56f55]">
-                                    <MapPin size={17} />
-                                  </span>
-                                  <div>
-                                    <p className="text-sm font-bold">
-                                      Not on a route there yet
-                                    </p>
-                                    <p className="mt-0.5 text-sm text-[#5d6b62]">
-                                      New routes open where sign-ups grow.
-                                    </p>
-                                  </div>
-                                </div>
-                                <a
-                                  href="https://wa.me/233550495570"
-                                  className="ml-12 inline-flex shrink-0 items-center gap-1.5 self-start text-sm font-bold underline decoration-[#f07b5c] decoration-2 underline-offset-4 sm:ml-0 sm:self-auto"
-                                >
-                                  Ask on WhatsApp <ArrowUpRight size={15} />
-                                </a>
-                              </>
-                            ) : (
-                              <>
-                                <div className="flex items-center gap-3">
-                                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-[#dcefe0] text-[#2e7d4f]">
-                                    <Check size={17} strokeWidth={2.5} />
-                                  </span>
-                                  <div>
-                                    <p className="text-sm font-bold">
-                                      We collect in {coverageResult.name}
-                                    </p>
-                                    <p className="mt-0.5 text-sm text-[#5d6b62]">
-                                      Every {coverageResult.day},{" "}
-                                      {coverageResult.time.replace(" - ", "–")}
-                                    </p>
-                                  </div>
-                                </div>
-                                <a
-                                  href="#pricing"
-                                  className="ml-12 inline-flex shrink-0 items-center gap-1.5 self-start text-sm font-bold underline decoration-[#f07b5c] decoration-2 underline-offset-4 sm:ml-0 sm:self-auto"
-                                >
-                                  See plans <ArrowRight size={15} />
-                                </a>
-                              </>
-                            )}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
-                  </div>
-                </form>
-                <div className="mt-4 flex flex-wrap items-center gap-2">
-                  <span className="mr-1 text-xs font-semibold text-white/55">
-                    Popular:
-                  </span>
-                  {AREAS.slice(0, 5).map(area => {
-                    const isPicked = pickedArea?.name === area.name;
-                    return (
-                      <button
-                        key={area.name}
-                        type="button"
-                        aria-pressed={isPicked}
-                        onClick={() => selectArea(area)}
-                        className={`rounded-full border px-3.5 py-1.5 text-xs font-semibold backdrop-blur-sm transition-colors ${isPicked ? "border-[#f0c66c] bg-[#f0c66c] text-[#16352c]" : "border-white/20 bg-white/10 text-white/85 hover:border-white/40 hover:bg-white/20"}`}
-                      >
-                        {area.name}
-                      </button>
-                    );
-                  })}
-                </div>
-              </motion.div>
             </motion.div>
             <motion.div
               initial={{ opacity: 0 }}
@@ -503,7 +340,9 @@ export default function Home() {
                     ))}
                   </ul>
                   <a
-                    href="#coverage"
+                    href="https://wa.me/233550495570"
+                    target="_blank"
+                    rel="noreferrer"
                     className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-bold ${plan.featured ? "bg-[#f0c66c] text-[#16352c]" : "border border-[#cbd7cc] text-[#16352c]"}`}
                   >
                     {plan.cta} <ArrowUpRight size={15} />
@@ -514,45 +353,6 @@ export default function Home() {
             <p className="mt-6 text-center font-mono text-[10px] uppercase tracking-[0.16em] text-[#89968d]">
               MTN MoMo · Telecel Cash · AT Money · Visa · Mastercard
             </p>
-          </div>
-        </section>
-
-        <section
-          id="collectors"
-          className="border-b border-[#dfe4db] bg-[#f0c66c] px-5 py-14 sm:px-8 lg:py-20"
-        >
-          <div className="mx-auto grid max-w-6xl gap-10 lg:grid-cols-[1fr_0.8fr] lg:items-end">
-            <div>
-              <p className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-[#755e20]">
-                For collectors
-              </p>
-              <h2 className="cc-display mt-3 max-w-2xl text-4xl leading-[0.95] text-[#16352c] sm:text-6xl">
-                More paid stops. Less time chasing them.
-              </h2>
-              <p className="mt-5 max-w-xl text-sm leading-6 text-[#4e5233]">
-                CleanConnect gives local drivers a built route, confirmed
-                pickups, and a clearer path to consistent weekly earnings.
-              </p>
-              <a
-                href="mailto:contact@cleanconnect.gh"
-                className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-sm font-bold text-white"
-              >
-                Join the collector network <ArrowUpRight size={16} />
-              </a>
-            </div>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-2">
-              {[
-                ["15–20", "pickups per route"],
-                ["GH₵ 150–250", "daily earning range"],
-                ["Friday", "weekly settlement"],
-                ["Included", "fuel support"],
-              ].map(([value, label]) => (
-                <div key={label} className="border-t border-[#af922f]/50 pt-3">
-                  <p className="text-xl font-bold text-[#16352c]">{value}</p>
-                  <p className="mt-1 text-xs text-[#675c2d]">{label}</p>
-                </div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -637,10 +437,10 @@ export default function Home() {
               </p>
               <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                 <a
-                  href="#coverage"
+                  href="#pricing"
                   className="inline-flex items-center justify-center gap-2 rounded-full bg-[#f0c66c] px-6 py-3.5 text-sm font-bold text-[#16352c]"
                 >
-                  Check coverage <ArrowUpRight size={17} />
+                  See pricing <ArrowUpRight size={17} />
                 </a>
                 <a
                   href="https://wa.me/233550495570"

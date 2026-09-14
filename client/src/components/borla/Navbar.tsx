@@ -5,7 +5,6 @@ import { Link, useLocation } from "wouter";
 
 const links = [
   ["How it works", "#how"],
-  ["Coverage", "#coverage"],
   ["Pricing", "#pricing"],
   ["Questions", "#questions"],
 ] as const;
@@ -59,7 +58,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-5 lg:flex">
           <a href="tel:+233550495570" className="text-[12px] font-semibold text-[#56645b] transition-colors hover:text-[#16352c]">+233 55 049 5570</a>
-          <a href="#coverage" className="inline-flex items-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">Book a pickup <ArrowUpRight size={15} /></a>
+          <a href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">See pricing <ArrowUpRight size={15} /></a>
         </div>
 
         <button type="button" aria-label={menuOpen ? "Close navigation" : "Open navigation"} aria-expanded={menuOpen} onClick={() => setMenuOpen((open) => !open)} className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d5ddd4] text-[#16352c] lg:hidden">
@@ -74,7 +73,7 @@ export default function Navbar() {
               {links.map(([label, href]) => <a key={href} href={href} onClick={closeMenu} className="border-b border-[#e1e5de] py-4 text-sm font-semibold text-[#33473d]">{label}</a>)}
               <Link href="/about" onClick={closeMenu} className="border-b border-[#e1e5de] py-4 text-sm font-semibold text-[#33473d]">About</Link>
               <div className="flex flex-col gap-3 pt-5 sm:flex-row">
-                <a href="#coverage" onClick={closeMenu} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-sm font-bold text-white">Book a pickup <ArrowUpRight size={16} /></a>
+                <a href="#pricing" onClick={closeMenu} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-sm font-bold text-white">See pricing <ArrowUpRight size={16} /></a>
                 <a href="tel:+233550495570" className="inline-flex items-center justify-center rounded-full border border-[#cbd5cc] px-5 py-3 text-sm font-bold text-[#33473d]">+233 55 049 5570</a>
               </div>
             </div>

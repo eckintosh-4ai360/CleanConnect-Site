@@ -2,9 +2,7 @@
 
 export const NAV_ITEMS: [label: string, href: string][] = [
   ["How it works", "#how"],
-  ["Coverage", "#coverage"],
   ["Pricing", "#pricing"],
-  ["For collectors", "#collectors"],
   ["Questions", "#questions"],
 ];
 
