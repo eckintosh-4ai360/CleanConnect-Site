@@ -340,7 +340,7 @@ export default function Home() {
                     ))}
                   </ul>
                   <a
-                    href="https://wa.me/233550495570"
+                    href="https://wa.me/233248814260"
                     target="_blank"
                     rel="noreferrer"
                     className={`mt-8 inline-flex items-center justify-center gap-2 rounded-full px-4 py-3 text-sm font-bold ${plan.featured ? "bg-[#f0c66c] text-[#16352c]" : "border border-[#cbd7cc] text-[#16352c]"}`}

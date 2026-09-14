@@ -74,7 +74,7 @@ export default function Navbar() {
               <Link href="/about" onClick={closeMenu} className="border-b border-[#e1e5de] py-4 text-sm font-semibold text-[#33473d]">About</Link>
               <div className="flex flex-col gap-3 pt-5 sm:flex-row">
                 <a href="#pricing" onClick={closeMenu} className="inline-flex items-center justify-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-sm font-bold text-white">See pricing <ArrowUpRight size={16} /></a>
-                <a href="tel:+233550495570" className="inline-flex items-center justify-center rounded-full border border-[#cbd5cc] px-5 py-3 text-sm font-bold text-[#33473d]">+233 55 049 5570</a>
+                <a href="tel:+233248814260" className="inline-flex items-center justify-center rounded-full border border-[#cbd5cc] px-5 py-3 text-sm font-bold text-[#33473d]">+233 24 881 4260</a>
               </div>
             </div>
           </motion.nav>
