@@ -29,7 +29,7 @@ export const HOW_IT_WORKS: [number: string, title: string, description: string][
   ],
   [
     "4",
-    "It repeats every week automatically",
+    "It repeats every scheduled time",
     "After setup, your pickup happens every week at the same time. Change it anytime in the app.",
   ],
 ];

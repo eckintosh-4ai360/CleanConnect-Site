@@ -57,7 +57,7 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-5 lg:flex">
-          <a href="tel:+233550495570" className="text-[12px] font-semibold text-[#56645b] transition-colors hover:text-[#16352c]">+233 55 049 5570</a>
+          <a href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-[#020F2F] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">Download App <ArrowUpRight size={15} /></a>
           <a href="#pricing" className="inline-flex items-center gap-2 rounded-full bg-[#16352c] px-5 py-3 text-[12px] font-bold text-white transition-all hover:-translate-y-0.5 hover:bg-[#285247]">See pricing <ArrowUpRight size={15} /></a>
         </div>
 
