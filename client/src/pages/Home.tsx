@@ -443,7 +443,7 @@ export default function Home() {
                   See pricing <ArrowUpRight size={17} />
                 </a>
                 <a
-                  href="https://wa.me/233550495570"
+                  href="https://wa.me/233248814260"
                   className="inline-flex items-center justify-center gap-2 rounded-full border border-white/25 px-6 py-3.5 text-sm font-bold text-white"
                 >
                   <MessageCircle size={16} /> WhatsApp the team

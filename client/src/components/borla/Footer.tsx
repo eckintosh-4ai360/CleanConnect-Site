@@ -15,7 +15,7 @@ export default function Footer() {
               <span><span className="block text-[17px] font-extrabold tracking-[-0.04em]">CleanConnect</span><span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.22em] text-[#b9c8bc]">Waste on schedule</span></span>
             </Link>
             <p className="mt-6 max-w-sm text-sm leading-7 text-[#c3d0c5]">Reliable household and business waste collection, coordinated around the way Ghanaian neighborhoods actually move.</p>
-            <a href="https://wa.me/233550495570" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#f0c66c] transition-colors hover:text-white"><MessageCircle size={16} /> WhatsApp support <ArrowUpRight size={15} /></a>
+            <a href="https://wa.me/233248814260" target="_blank" rel="noreferrer" className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-[#f0c66c] transition-colors hover:text-white"><MessageCircle size={16} /> WhatsApp support <ArrowUpRight size={15} /></a>
           </div>
 
           <div><p className="font-mono text-[10px] uppercase tracking-[0.22em] text-[#f0c66c]">Explore</p><div className="mt-5 flex flex-col gap-3 text-sm text-[#c3d0c5]"><a href="#how" className="transition-colors hover:text-white">How it works</a><a href="#pricing" className="transition-colors hover:text-white">Pricing</a><Link href="/about" className="transition-colors hover:text-white">About CleanConnect</Link></div></div>
