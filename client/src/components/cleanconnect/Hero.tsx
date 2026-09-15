@@ -10,7 +10,7 @@ export default function Hero() {
     <section className="cc-hero" id="top">
       <div className="cc-wrap cc-hero-layout">
         <div className="cc-hero-copy">
-          <p className="cc-eyebrow">Tarkwa · Household &amp; business waste</p>
+          <p className="cc-eyebrow">Ghana · Household &amp; business waste</p>
           <h1 className="cc-h1">
             Your borla goes out <em>on a schedule</em> now.
           </h1>

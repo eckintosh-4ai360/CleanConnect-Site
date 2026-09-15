@@ -155,7 +155,7 @@ export default function Home() {
                   <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-[#a9d6b4] opacity-75" />
                   <span className="relative inline-flex h-2 w-2 rounded-full bg-[#a9d6b4]" />
                 </span>
-                Tarkwa · Household &amp; business waste collection
+                Ghana · Household &amp; business waste collection
               </motion.p>
               <motion.h1
                 variants={reveal}
@@ -168,8 +168,7 @@ export default function Home() {
                 variants={reveal}
                 className="mt-6 max-w-md text-base leading-7 text-white/75 sm:text-lg"
               >
-                Know your pickup day, track the truck to your street, and pay
-                with MoMo.
+                Know your pickup day, track the truck to your household, office, marketplace, lorry station, street, and pay with mom
               </motion.p>
             </motion.div>
             <motion.div
