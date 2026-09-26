@@ -81,7 +81,7 @@ const fallbackPlans = [
   {
     name: "Commercial",
     tag: "For compounds and teams",
-    price: "Custom",
+    price: "GH₵ 100",
     per: "per month",
     list: [
       "Custom schedule",
@@ -115,7 +115,7 @@ export default function Home() {
       ? PLANS.map((plan, index) => ({
           ...fallbackPlans[index],
           ...plan,
-          price: index === 0 ? "GH₵ 25" : index === 1 ? "GH₵ 50" : "Custom",
+          price: index === 0 ? "GH₵ 25" : index === 1 ? "GH₵ 50" : "GH₵ 100",
         }))
       : fallbackPlans;
 

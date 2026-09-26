@@ -67,7 +67,7 @@ export const PLANS = [
   {
     name: "Commercial",
     tag: "For compounds",
-    price: "Custom",
+    price: "GH₵ 100",
     per: "per month",
     featured: false,
     list: ["Daily or custom schedule", "Large bin or multiple", "Dedicated route", "Account manager", "Bulk discount"],
